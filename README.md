@@ -22,7 +22,7 @@ It gave way to the publication of a **5 stories investigation**, released on May
 <br>3. Introducing the big 30 Frenchies and their "fat cats" 
 <br>4. How the electric companies had (almost) foreseen it all, 20 years ago. 
 <br>5. Challenges ahead : can the ETS horse be put inside the barn ? 
-<br>The whole investigation was presented for international Datajournalism awards as **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 onr European CO2 market : who's really in control ?"</a>**.
+<br>The whole investigation was presented for international Datajournalism awards as **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
 
 **// Work in progress**
 
@@ -52,7 +52,7 @@ Cela a donné lieu à la publication d'une **enquête en 5 volets**, les 31 mai 
 <br>3. Zoom sur la France. Quelles sont les 30 entreprises-clés ?
 <br>4. Comment les électriciens européens avaient (presque) tout prévu du marché ETS voici 20 ans. 
 <br>5. Les défis du marché ETS : le ver était-il dans le fruit ?
-<br>L'enquête a été présentée à un prix international de datajournalisme sous l'appellation **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 onr European CO2 market : who's really in control ?"</a>**.
+<br>L'enquête a été présentée à un prix international de datajournalisme sous l'appellation **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
 
 **// Pistes d'amélioration** 
 
