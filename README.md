@@ -8,7 +8,7 @@ The information is available for 31 countries, 30 sectors, for the years 2005-20
 
 **// Caveat** 
 
-The data concernning allocations for phase 3 (2013-2015) is note acurate : the script doesn't take into account installations under article 10c from the directive.
+The data concernning allocations for phase 3 (2013-2015) is note acurate for certain countries (not France) : the script doesn't take into account installations under article 10c from the directive.
 
 **// Open data**
 
@@ -38,7 +38,7 @@ L'information est disponible pour 31 pays, 30 secteurs, pour les années 2005-20
 
 **// Attention** 
 
-Les données concernant les allocations de quotas pour la 3ème phase (2013-2015) ne sont pas bonnes : l'outil n'avait pas prévu de prendre en compte les cases avec des astérisques, excluant donc les quotas gratuits pour les installations relevant de l'article 10c de la directive.
+Les données concernant les allocations de quotas pour la 3ème phase (2013-2015) ne sont pas bonnes pour certains pays (pas la France) : l'outil n'avait pas prévu de prendre en compte les cases avec des astérisques, excluant donc les quotas gratuits pour les installations relevant de l'article 10c de la directive.
 
 **// Open data**
 
