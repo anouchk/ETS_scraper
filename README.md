@@ -26,7 +26,7 @@ It gave way to the publication of a **5 stories investigation**, released on May
 
 **// Work in progress**
 
-2016 data is available since April 3rd of 2017. It would be useful to make the script better by allowing it to take into account free allocations for countries under article 10c, on phase 3.
+2016 data is available since April 3rd of 2017. It would be useful to make the script better by allowing it to take into account free allocations for all countries under article 10c, on phase 3.
 
 # ETS scraper 
 
@@ -56,4 +56,4 @@ Cela a donné lieu à la publication d'une **enquête en 5 volets**, les 31 mai 
 
 **// Pistes d'amélioration** 
 
-Les données 2016 étant disponibles le 3 avril 2017, il serait utile d'améliorer l'outil afin de bien prendre en compte les quotas gratuits de la phase 3. 
+Les données 2016 étant disponibles depuis le 3 avril 2017, il serait utile d'améliorer l'outil afin de bien prendre en compte les allocations de quotas gratuits de la phase 3 pour tous les pays. 
