@@ -45,7 +45,7 @@ for cntry in cntryList:
 	client.waits.forPageLoad(timeout=timeOut)
 	client.waits.sleep(milliseconds=timeSleep) 
 	# scraper le contenu // scrape content
-	response = client.commands.getPageText() # récupérer co cc  ntenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // get the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
+	response = client.commands.getPageText() # récupérer contenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // get the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
 	# response c'est un array avec plusieurs éléments : 'error' (est-ce que ça a marché, true/false), 'result' (le code de la page), etc. // response is an array with several elements : 'error' (did it work, true/false), 'result' (the page's code), etc.
 	soup = BeautifulSoup(response['result']) # le rend lisible
 	# BeautifulSoup c'est pratique parce que ça a des fonctions find (sort la 1e occurrence) et findAll (sort toutes les occurrences), qui permettent de faire pomme F avec des attributs html dans des balises // BeautifulSoup is practical because it has the 'find' function (shows the 1st occurrence) and findAll (shows all the occurrences), which allow to search for the HTML attributes in tags
