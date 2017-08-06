@@ -268,8 +268,22 @@ for l,link in enumerate(DFunique['link']):
 	for i,row in enumerate(rows):# pour chaque ligne on regarde la colonne 1 pour avoir l'année (ajoutée au nom de colonne), et on garde les chiffres des colonnes 2 et 3 // for each line we keep column 1 in order to have the year (added to the column's name) and we keep the numbers of the columns 2 and and 3 
 		if i>1:
 			cols = row.findAll('td',recursive=False)
-			cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables // grab the text from the tag and get rid of non-breaking spaces
-			if len(cols)>1 : # pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
+			#cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables // grab the text from the tag and get rid of non-breaking spaces
+			newcols=[]
+			for j,col in enumerate(cols):
+				spans = col.findAll('span', recursive=False)
+				mytext = ""
+				for z, span in enumerate(spans):
+					if z == 0 :
+						mytext = span.text.replace ("&nbsp;", "") 
+					else :
+						mytext = mytext + "/" + span.text.replace ("&nbsp;", "")	
+				newcols=newcols.append(mytext)
+			cols=newcols
+				#span =""
+				#span[j] = [col.span[j].text]
+				#cols = cols + "/" + col[j]	
+			if len(cols)>1 : # en fait, les astérisques en bas du tableau constituent une ligne à une colonne => pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
 				mycols=mycols+cols[2]+'\t'+cols[3]+'\t'
 				colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t' # les émissions vérifiées et les allocations pour chaque année
 	# write output to ouput file (f_out)
