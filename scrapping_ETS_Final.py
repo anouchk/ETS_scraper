@@ -37,7 +37,7 @@ list_of_tables=[]
 
 for cntry in cntryList:
 	# selectionner un pays et une période et ouvrir la page // select a country and a period and open the page 
-	client.selectReset(name='nap.registryCodeArray') # deselectionner toutes les options pays dans le choix multiple nap.registryCodeArray // unselect all the options about the country in multiple choice nap.registryCodeArray
+	client.selectReset(name='nap.registryCodeArray') # deselectionner toutes les options pays dans le choix multiple nap.registryCodeArray parce que quand on ouvre avec client il en sélectionne plusieurs // unselect all the options about the country in multiple choice nap.registryCodeArray
 	client.select(name='nap.registryCodeArray',option=cntry) # selectionner l'option pays dans le choix multiple nap.registryCodeArray // selection the option country in the multiple choice nap.registryCodeArray
 	client.select(name='periodCode',option='All') # selectionner la periode dans le choix multiple periodCode // select period in multiple choice periodCode
 	client.click(value='Search') # cliquer sur search // click on search
@@ -45,7 +45,7 @@ for cntry in cntryList:
 	client.waits.forPageLoad(timeout=timeOut)
 	client.waits.sleep(milliseconds=timeSleep) 
 	# scraper le contenu // scrape content
-	response = client.commands.getPageText() # récupérer contenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // get the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
+	response = client.commands.getPageText() # récupérer co cc  ntenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // get the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
 	# response c'est un array avec plusieurs éléments : 'error' (est-ce que ça a marché, true/false), 'result' (le code de la page), etc. // response is an array with several elements : 'error' (did it work, true/false), 'result' (the page's code), etc.
 	soup = BeautifulSoup(response['result']) # le rend lisible
 	# BeautifulSoup c'est pratique parce que ça a des fonctions find (sort la 1e occurrence) et findAll (sort toutes les occurrences), qui permettent de faire pomme F avec des attributs html dans des balises // BeautifulSoup is practical because it has the 'find' function (shows the 1st occurrence) and findAll (shows all the occurrences), which allow to search for the HTML attributes in tags
@@ -76,7 +76,7 @@ f_out.write('cntry\tperiod\tpagenum\tinst_id\tpermit_id\tlink\n')
 
 pageStart=0		# numero de page-1 // number of page -1
 tabStart=0
-error=True
+error=True # par défaut error est à true, donc je rentre dans ma boucle, et je remets error à faulse
 while error :
 	error=False
 	try:
@@ -217,7 +217,7 @@ for l,link in enumerate(DFunique['link']):
 	rows = AccountInfo.findAll('tr',recursive=False)   # chaque ligne est en fait une table differente (AccountInfo[j]) qu'on va lire séparément // each row is actually a different table (AccountInfo[j]) that we're going to read separately
 	for i,row in enumerate(rows):
 		print '.',
-		cols = row.findAll('td',recursive=False)
+		cols = row.findAll('td',recursive=False) # le principe : à chaque ligne, cols c'est un array. Ensuite, on va la transformer en chaîne de caractères séparés par des tabulations
 		if len(cols)>1 :
 			print '.',
 			cols=[col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables // grab the text from the tag and get rid of non-breaking spaces
@@ -271,7 +271,7 @@ for l,link in enumerate(DFunique['link']):
 			cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables // grab the text from the tag and get rid of non-breaking spaces
 			if len(cols)>1 : # pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
 				mycols=mycols+cols[2]+'\t'+cols[3]+'\t'
-				colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t'
+				colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t' # les émissions vérifiées et les allocations pour chaque année
 	# write output to ouput file (f_out)
 	mycols=re.sub(u'\u2013','-',mycols)
 	mycols=re.sub(u'&#39;',"'",mycols)
