@@ -1,7 +1,7 @@
-mydir = "/Users/analutzky/Desktop/data/scrapping" # je définis mon répertoire où seront créés mes fichiers scrapés. 
+mydir = "/Users/analutzky/Desktop/data/scrapping_ETS/scraping_07_08_2017" # je définis mon répertoire où seront créés mes fichiers scrapés. 
 date = "_07_08_2017"
 
-###### PHASE 0: initialisation // PHASE 0: initialization
+###### PHASE 0: initialisation, lancer windmill // PHASE 0: initialization
 
 from BeautifulSoup import BeautifulSoup
 # pour scraper on va utiliser windmill. windmill va ouvrir firefox et faire semblant d'etre un utilisateur humain // In order to scrape, we're going to use windmill. windmill is going to open firefox and behave like a human
@@ -67,7 +67,7 @@ for cntry in cntryList:
 f_out=open(mydir + '/list_of_tables' + date + '.txt','w')
 for line in list_of_tables:
 	f_out.write('\t'.join(line)+'\n')
-	
+
 f_out.close()
 
 
