@@ -263,29 +263,32 @@ for l,link in enumerate(DFunique['link']):
 			if i==2: # la ligne 2 nous donne le contenu a scraper // line 2 gives us the content to be scraped
 				mycols=mycols+'\t'.join(cols)+'\t'
 	##### read Emissions info
-	Emission=Tables[1].table
-	rows = Emission.findAll('tr',recursive=False)
-	for i,row in enumerate(rows):# pour chaque ligne on regarde la colonne 1 pour avoir l'année (ajoutée au nom de colonne), et on garde les chiffres des colonnes 2 et 3 // for each line we keep column 1 in order to have the year (added to the column's name) and we keep the numbers of the columns 2 and and 3 
-		if i>1:
-			cols = row.findAll('td',recursive=False)
-			#cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables // grab the text from the tag and get rid of non-breaking spaces
-			newcols=[]
-			for j,col in enumerate(cols):
-				spans = col.findAll('span', recursive=False)
-				mytext = ""
-				for z, span in enumerate(spans):
-					if z == 0 :
-						mytext = span.text.replace ("&nbsp;", "") 
-					else :
-						mytext = mytext + "/" + span.text.replace ("&nbsp;", "")	
-				newcols=newcols.append(mytext)
-			cols=newcols
-				#span =""
-				#span[j] = [col.span[j].text]
-				#cols = cols + "/" + col[j]	
-			if len(cols)>1 : # en fait, les astérisques en bas du tableau constituent une ligne à une colonne => pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
-				mycols=mycols+cols[2]+'\t'+cols[3]+'\t'
-				colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t' # les émissions vérifiées et les allocations pour chaque année
+Emission=Tables[1].table
+rows = Emission.findAll('tr',recursive=False)
+for i,row in enumerate(rows):# pour chaque ligne on regarde la colonne 1 pour avoir l'année (ajoutée au nom de colonne), et on garde les chiffres des colonnes 2 et 3 // for each line we keep column 1 in order to have the year (added to the column's name) and we keep the numbers of the columns 2 and and 3 
+	if i>1:
+		cols = row.findAll('td',recursive=False) # trouve-moi toutes les colonnes dans row (ligne i)
+		#cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables (ancienne version, remplacée depuis par une boucle) // grab the text from the tag and get rid of non-breaking spaces
+		newcols=['a']*len(cols) # ici on crée un objet qui contient autant d'éléments vides que de colonnes dans le tableau d'origine (il y a autant de colonnes que de lignes de date). Car dans Python on ne peut pas (en tout cas on n'y arrive pas, il dit typeof = none) rajouter un élément à un vecteur vide. Il faut créer un vecteur ayant déjà la bonne taille. 
+		for j,col in enumerate(cols):
+			spans = col.findAll('span', recursive=False) # trouve-moi tous les spans dans col (colonne j)
+			mytext = "" # on initialise la variable qui constituera le contenu de chaque colonne (toutes les colonnes une à une)
+			for z,span in enumerate(spans):
+				if z == 0 : # si c'est le premier span
+					mytext = span.text.replace("&nbsp;", "") # alors insère son contenu tel quel dans la variable mytext
+					# print 'yes', i,j,z, mytext
+				else : # si c'est le 2e span ou les suivants, alors on va mettre des slashs et on ajoute le contenu à mytext (si celui-ci n'est pas vide) 
+					if span.text.replace ("&nbsp;", "")!='': #pour ne pas avoir deux slashs de suite : seulement lorsque le span n'est pas vide, 
+						mytext = mytext + "/" + span.text.replace ("&nbsp;", "") # alors son contenu est ajouté à la variable mytext
+						#print 'no ', i,j,z, mytext
+			newcols[j]=mytext
+		cols=newcols
+			#span =""
+			#span[j] = [col.span[j].text]
+			#cols = cols + "/" + col[j]	
+		if len(cols)>1 : # en fait, les astérisques en bas du tableau constituent une ligne à une colonne => pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
+			mycols=mycols+cols[2]+'\t'+cols[3]+'\t'
+			colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t' # les émissions vérifiées et les allocations pour chaque année
 	# write output to ouput file (f_out)
 	mycols=re.sub(u'\u2013','-',mycols)
 	mycols=re.sub(u'&#39;',"'",mycols)
