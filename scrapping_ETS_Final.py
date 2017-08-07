@@ -1,3 +1,5 @@
+mydir = "/Users/analutzky/Desktop/data/scrapping" # je définis mon répertoire où seront créés mes fichiers scrapés. 
+
 ###### PHASE 0: initialisation // PHASE 0: initialization
 
 from BeautifulSoup import BeautifulSoup
@@ -61,7 +63,7 @@ for cntry in cntryList:
 		period=cols[1].text.replace("&nbsp;", "")
 		list_of_tables.append([cntry,period,link])
 
-f_out=open('/Users/analutzky/Desktop/data/scrapping/list_of_tables.txt','w')
+f_out=open(mydir + '/list_of_tables.txt','w')
 for line in list_of_tables:
 	f_out.write('\t'.join(line)+'\n')
 	
@@ -70,8 +72,8 @@ f_out.close()
 
 ###### PHASE 2: scraper tous les liens // PHASE 2: scrape all the links
 
-list_of_tables=open('/Users/analutzky/Desktop/data/scrapping/list_of_tables.txt','rU') # rU opens the file as a text file, but lines may be terminated by any of the following: the Unix end-of-line convention '\n', the Macintosh convention '\r', or the Windows convention '\r\n'
-f_out=open('/Users/analutzky/Desktop/data/scrapping/list_of_links_allCountries_v2.txt','a') # on ouvre le fichier en mode append afin de préserver ce qui a déjà été écrit en cas de plantage (car quand on ouvre en mode écriture, on écrase le contenu précédent). En mode append, ça ouvre le fichier, passe toutes les lignes et rajoute à la fin // we open the file in an "append' mode, in order to save what has already been written in case of bug (because when we open in a "writing" mode, we erase the former content). In an "append" mode, it opens the file, passes over all the lines and adds content at the end
+list_of_tables=open(mydir + '/list_of_tables.txt','rU') # rU opens the file as a text file, but lines may be terminated by any of the following: the Unix end-of-line convention '\n', the Macintosh convention '\r', or the Windows convention '\r\n'
+f_out=open(mydir + '/list_of_links_allCountries_v2.txt','a') # on ouvre le fichier en mode append afin de préserver ce qui a déjà été écrit en cas de plantage (car quand on ouvre en mode écriture, on écrase le contenu précédent). En mode append, ça ouvre le fichier, passe toutes les lignes et rajoute à la fin // we open the file in an "append' mode, in order to save what has already been written in case of bug (because when we open in a "writing" mode, we erase the former content). In an "append" mode, it opens the file, passes over all the lines and adds content at the end
 f_out.write('cntry\tperiod\tpagenum\tinst_id\tpermit_id\tlink\n')
 
 pageStart=0		# numero de page-1 // number of page -1
@@ -185,15 +187,15 @@ from BeautifulSoup import BeautifulSoup
 import pandas as pd	
 
 # on lit le csv (tous les liens à scrapper) // reading csv file (which contains all the links to scrape)
-DF=pd.read_csv('/Users/analutzky/Desktop/data/scrapping/list_of_links_allCountries.txt',sep='\t',error_bad_lines=False) # error_bad_lines c'est un argument qui existe déjà dans pd.read_casv : quand un ligne est anormale, panda plante. Ca permet de l'éviter : au lieu de planter, il dit cette ligne a un pb, je la passe. // error_bad_lines is an argument that already exists in pd.read_casv : when a line is not normal, panda bugs. This enables to prevent it : instead of bugging, panda says : ok this line has a problem, I go to the next one. 
+DF=pd.read_csv(mydir + '/list_of_links_allCountries.txt',sep='\t',error_bad_lines=False) # error_bad_lines c'est un argument qui existe déjà dans pd.read_casv : quand un ligne est anormale, panda plante. Ca permet de l'éviter : au lieu de planter, il dit cette ligne a un pb, je la passe. // error_bad_lines is an argument that already exists in pd.read_casv : when a line is not normal, panda bugs. This enables to prevent it : instead of bugging, panda says : ok this line has a problem, I go to the next one. 
 
 # on enleve les liens qui sont en double // getting rid of th duplicate links 
 DFunique=DF.drop_duplicates(subset='link') # http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html
 
 import io
 import re # pour remplacer des charactères (avec des regexpr) // replace some characters with regex
-f_out=io.open('/Users/analutzky/Desktop/data/scrapping/Emissions_allCompanies_allCountries.txt','a', encoding='utf16') # fichier output pour écrire les résultats // output file to write the results
-f_err=io.open('/Users/analutzky/Desktop/data/scrapping/Emissions_allCompanies_allCountries_errors.txt','w', encoding='utf16') # fichier pour écrire les lignes avec des erreurs // file to write lines with errors
+f_out=io.open(mydir + '/Emissions_allCompanies_allCountries.txt','a', encoding='utf16') # fichier output pour écrire les résultats // output file to write the results
+f_err=io.open(mydir + '/Emissions_allCompanies_allCountries_errors.txt','w', encoding='utf16') # fichier pour écrire les lignes avec des erreurs // file to write lines with errors
 for l,link in enumerate(DFunique['link']):
 	print l,link
 	if l<11558 :
