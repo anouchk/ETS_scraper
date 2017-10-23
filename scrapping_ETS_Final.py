@@ -1,5 +1,5 @@
-mydir = "/Users/analutzky/Desktop/data/scrapping_ETS/scraping_07_08_2017" # je définis mon répertoire où seront créés mes fichiers scrapés. 
-date = "_07_08_2017"
+mydir = "/Users/analutzky/Desktop/data/scrapping_ETS/data/15_08_2017" " # je définis mon répertoire où seront créés mes fichiers scrapés // defining the directory where the scraped data will be stored 
+date = "_15_08_2017"
 
 ###### PHASE 0: initialisation, lancer windmill // PHASE 0: initialization
 
@@ -18,7 +18,7 @@ client = WindmillTestClient(__name__)
 # temps avant timeout (pour ne pas bloquer si la page ne s'ouvre pas) // a certain amount of time before it gives up opening a page, so that it doesn't get stuck
 timeOut=u'8000'		# 8 secondes avant time out // 8 sec before timeout
 # temps de pause entre deux requêtes (pour ne pas surcharger les serveurs) // time lapse between two requests (not to overwhelm the servers)
-timeSleep=u'100' 	# 0.5 seconde // 0.5 sec
+timeSleep=u'100' 	# 0.1 seconde // 0.1 sec
 
 # l'url qu'on va vouloir scraper // the url we want to scrape
 rootServer="http://ec.europa.eu"
@@ -40,13 +40,13 @@ list_of_tables=[]
 
 for cntry in cntryList:
 	# selectionner un pays et une période et ouvrir la page // select a country and a period and open the page 
-	client.selectReset(name='nap.registryCodeArray') # deselectionner toutes les options pays dans le choix multiple nap.registryCodeArray parce que quand on ouvre avec client il en sélectionne plusieurs // unselect all the options about the country in multiple choice nap.registryCodeArray
-	client.select(name='nap.registryCodeArray',option=cntry) # selectionner l'option pays dans le choix multiple nap.registryCodeArray // selection the option country in the multiple choice nap.registryCodeArray
-	client.select(name='periodCode',option='All') # selectionner la periode dans le choix multiple periodCode // select period in multiple choice periodCode
-	client.click(value='Search') # cliquer sur search // click on search
-	# attendre que la page s'update // wait tille the page gets updated
-	client.waits.forPageLoad(timeout=timeOut)
-	client.waits.sleep(milliseconds=timeSleep) 
+	mute=client.selectReset(name='nap.registryCodeArray') # deselectionner toutes les options pays dans le choix multiple nap.registryCodeArray parce que quand on ouvre avec client il en sélectionne plusieurs // unselect all the options about the country in multiple choice nap.registryCodeArray
+	mute=client.select(name='nap.registryCodeArray',option=cntry) # selectionner l'option pays dans le choix multiple nap.registryCodeArray // selection the option country in the multiple choice nap.registryCodeArray
+	mute=client.select(name='periodCode',option='All') # selectionner la periode dans le choix multiple periodCode // select period in multiple choice periodCode
+	mute=client.click(value='Search') # cliquer sur search // click on search
+	# attendre que la page s'update // wait till the page gets updated
+	mute=client.waits.forPageLoad(timeout=timeOut)
+	mute=client.waits.sleep(milliseconds=timeSleep) 
 	# scraper le contenu // scrape content
 	response = client.commands.getPageText() # récupérer contenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // get the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
 	# response c'est un array avec plusieurs éléments : 'error' (est-ce que ça a marché, true/false), 'result' (le code de la page), etc. // response is an array with several elements : 'error' (did it work, true/false), 'result' (the page's code), etc.
@@ -73,7 +73,6 @@ f_out.close()
 
 ###### PHASE 2: scraper tous les liens // PHASE 2: scrape all the links
 
-list_of_tables=open(mydir + '/list_of_tables' + date + '.txt','rU') # rU opens the file as a text file, but lines may be terminated by any of the following: the Unix end-of-line convention '\n', the Macintosh convention '\r', or the Windows convention '\r\n'
 f_out=open(mydir + '/list_of_links_allCountries' + date + '.txt','a') # on ouvre le fichier en mode append afin de préserver ce qui a déjà été écrit en cas de plantage (car quand on ouvre en mode écriture, on écrase le contenu précédent). En mode append, ça ouvre le fichier, passe toutes les lignes et rajoute à la fin // we open the file in an "append' mode, in order to save what has already been written in case of bug (because when we open in a "writing" mode, we erase the former content). In an "append" mode, it opens the file, passes over all the lines and adds content at the end
 f_out.write('cntry\tperiod\tpagenum\tinst_id\tpermit_id\tlink\n')
 
@@ -83,6 +82,7 @@ error=True # par défaut error est à true, donc je rentre dans ma boucle, et je
 while error :
 	error=False
 	try:
+		list_of_tables=open(mydir + '/list_of_tables' + date + '.txt','rU') # rU opens the file as a text file, but lines may be terminated by any of the following: the Unix end-of-line convention '\n', the Macintosh convention '\r', or the Windows convention '\r\n'
 		for itab,line_tab in enumerate(list_of_tables):
 			print itab, line_tab
 			if itab<tabStart:
@@ -92,9 +92,9 @@ while error :
 			period=table_to_scrap[1]
 			URL=table_to_scrap[2]
 			print 'opening URL '+cntry+' '+period #pour ce qu'on fait quand le code s'exécute // that's to see what's happening when the code is running
-			client.open(url=URL)
-			client.waits.forPageLoad(timeout=timeOut)	
-			client.waits.sleep(milliseconds=timeSleep) 
+			mute=client.open(url=URL)
+			mute=client.waits.forPageLoad(timeout=timeOut)	
+			mute=client.waits.sleep(milliseconds=timeSleep) 
 			response=client.commands.getPageText() # recuperer contenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // grab the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
 			# response c'est un array avec plusieurs éléments : 'error' (est-ce que ça a marché, true/false), 'result' (le code de la page), etc. // response is an array with several elements : 'error' (did it work, true/false), 'result' (the page's code), etc.
 			soup = BeautifulSoup(response['result'])
@@ -106,10 +106,10 @@ while error :
 			print str(NbPages)+'page to scrap'
 			for pagenum in range(0,NbPages):
 				if itab==tabStart and pagenum<pageStart :
-					print 'table'+str(itab)+', page'+str(pagenum+1)+'/'+str(NbPages)+' skipped'
-					client.click(value='Next>') 
-					client.waits.forPageLoad(timeout=timeOut)	
-					client.waits.sleep(milliseconds=timeSleep)
+					print '\ntable'+str(itab)+', page'+str(pagenum+1)+'/'+str(NbPages)+' skipped'
+					mute=client.click(value='Next>') 
+					mute=client.waits.forPageLoad(timeout=timeOut)	
+					mute=client.waits.sleep(milliseconds=timeSleep)
 					continue
 				table = soup.find('table', attrs={'id':'tblNapList'})
 				print '.', # pour savoir où le pgm en est : s'il plante, on sait où il a planté (avec une virgule pour ne pas aller à la ligne et ainsi prendre moins de place) // # that's to see where the program is : if there's a bug, we now where (with a coma to avoid line wraping, not to take too much space) 
@@ -135,9 +135,9 @@ while error :
 					f_out.write('\t'.join([str(x) for x in line])+'\n')
 				print 'table'+str(itab)+', page'+str(pagenum+1)+'/'+str(NbPages)+' read'
 				if NbPages>1:
-					client.click(value='Next>') # 
-					client.waits.forPageLoad(timeout=timeOut)
-					client.waits.sleep(milliseconds=timeSleep)
+					mute=client.click(value='Next>') # 
+					mute=client.waits.forPageLoad(timeout=timeOut)
+					mute=client.waits.sleep(milliseconds=timeSleep)
 					response=client.commands.getPageText()
 					soup = BeautifulSoup(response['result'])
 			# read last page	
@@ -162,6 +162,7 @@ while error :
 		error=True
 		tabStart=itab
 		pageStart=pagenum
+		list_of_tables.close()
 
 list_of_tables.close()
 f_out.close()
@@ -188,7 +189,7 @@ from BeautifulSoup import BeautifulSoup
 import pandas as pd	
 
 # on lit le csv (tous les liens à scrapper) // reading csv file (which contains all the links to scrape)
-DF=pd.read_csv(mydir + '/list_of_links_allCountries' + date + '.txt',sep='\t',error_bad_lines=False) # error_bad_lines c'est un argument qui existe déjà dans pd.read_casv : quand un ligne est anormale, panda plante. Ca permet de l'éviter : au lieu de planter, il dit cette ligne a un pb, je la passe. // error_bad_lines is an argument that already exists in pd.read_casv : when a line is not normal, panda bugs. This enables to prevent it : instead of bugging, panda says : ok this line has a problem, I go to the next one. 
+DF=pd.read_csv(mydir + '/list_of_links_allCountries' + date + '.txt',sep='\t',error_bad_lines=True) # error_bad_lines c'est un argument qui existe déjà dans pd.read_casv : quand un ligne est anormale, panda plante. Ca permet de l'éviter : au lieu de planter, il dit cette ligne a un pb, je la passe. // error_bad_lines is an argument that already exists in pd.read_casv : when a line is not normal, panda bugs. This enables to prevent it : instead of bugging, panda says : ok this line has a problem, I go to the next one. 
 
 # on enleve les liens qui sont en double // getting rid of th duplicate links 
 DFunique=DF.drop_duplicates(subset='link') # http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html
@@ -199,12 +200,12 @@ f_out=io.open(mydir + '/Emissions_allCompanies_allCountries' + date + '.txt','a'
 f_err=io.open(mydir + '/Emissions_allCompanies_allCountries_errors' + date + '.txt','w', encoding='utf16') # fichier pour écrire les lignes avec des erreurs // file to write lines with errors
 for l,link in enumerate(DFunique['link']):
 	print l,link
-	if l<11558 :
-		continue
+#	if l<11558 :
+#		continue
 	url='http://ec.europa.eu/environment/ets/'+link[12:]
 	# lire avec mechanize // read with mechanize
 	print '.',
-	page=br.open(url=url)
+	page=br.open(url)
 	html = page.read() # recuperer contenu de la page en texte brut (si retour à la ligne \n, si tabulation \t... c'est illisible ! // grab the page's content as a raw text (cause if there is some wrap to the next line \n, or tab \t... it gets messy and unreadable !)
 	# make pretty with beautiful soup
 	soup=BeautifulSoup(html) # ça le structure // getting structured
@@ -266,32 +267,32 @@ for l,link in enumerate(DFunique['link']):
 			if i==2: # la ligne 2 nous donne le contenu a scraper // line 2 gives us the content to be scraped
 				mycols=mycols+'\t'.join(cols)+'\t'
 	##### read Emissions info
-Emission=Tables[1].table
-rows = Emission.findAll('tr',recursive=False)
-for i,row in enumerate(rows):# pour chaque ligne on regarde la colonne 1 pour avoir l'année (ajoutée au nom de colonne), et on garde les chiffres des colonnes 2 et 3 // for each line we keep column 1 in order to have the year (added to the column's name) and we keep the numbers of the columns 2 and and 3 
-	if i>1:
-		cols = row.findAll('td',recursive=False) # trouve-moi toutes les colonnes dans row (ligne i)
-		#cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables (ancienne version, remplacée depuis par une boucle) // grab the text from the tag and get rid of non-breaking spaces
-		newcols=['a']*len(cols) # ici on crée un objet qui contient autant d'éléments vides que de colonnes dans le tableau d'origine (il y a autant de colonnes que de lignes de date). Car dans Python on ne peut pas (en tout cas on n'y arrive pas, il dit typeof = none) rajouter un élément à un vecteur vide. Il faut créer un vecteur ayant déjà la bonne taille. 
-		for j,col in enumerate(cols):
-			spans = col.findAll('span', recursive=False) # trouve-moi tous les spans dans col (colonne j)
-			mytext = "" # on initialise la variable qui constituera le contenu de chaque colonne (toutes les colonnes une à une)
-			for z,span in enumerate(spans):
-				if z == 0 : # si c'est le premier span
-					mytext = span.text.replace("&nbsp;", "") # alors insère son contenu tel quel dans la variable mytext
-					# print 'yes', i,j,z, mytext
-				else : # si c'est le 2e span ou les suivants, alors on va mettre des slashs et on ajoute le contenu à mytext (si celui-ci n'est pas vide) 
-					if span.text.replace ("&nbsp;", "")!='': #pour ne pas avoir deux slashs de suite : seulement lorsque le span n'est pas vide, 
-						mytext = mytext + "/" + span.text.replace ("&nbsp;", "") # alors son contenu est ajouté à la variable mytext
-						#print 'no ', i,j,z, mytext
-			newcols[j]=mytext
-		cols=newcols
-			#span =""
-			#span[j] = [col.span[j].text]
-			#cols = cols + "/" + col[j]	
-		if len(cols)>1 : # en fait, les astérisques en bas du tableau constituent une ligne à une colonne => pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
-			mycols=mycols+cols[2]+'\t'+cols[3]+'\t'
-			colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t' # les émissions vérifiées et les allocations pour chaque année
+	Emission=Tables[1].table
+	rows = Emission.findAll('tr',recursive=False)
+	for i,row in enumerate(rows):# pour chaque ligne on regarde la colonne 1 pour avoir l'année (ajoutée au nom de colonne), et on garde les chiffres des colonnes 2 et 3 // for each line we keep column 1 in order to have the year (added to the column's name) and we keep the numbers of the columns 2 and and 3 
+		if i>1:
+			cols = row.findAll('td',recursive=False) # trouve-moi toutes les colonnes dans row (ligne i)
+			#cols = [col.text.replace("&nbsp;", "") for col in cols] # on extrait le texte de la balise et on retire les insécables (ancienne version, remplacée depuis par une boucle) // grab the text from the tag and get rid of non-breaking spaces
+			newcols=['a']*len(cols) # ici on crée un objet qui contient autant d'éléments vides que de colonnes dans le tableau d'origine (il y a autant de colonnes que de lignes de date). Car dans Python on ne peut pas (en tout cas on n'y arrive pas, il dit typeof = none) rajouter un élément à un vecteur vide. Il faut créer un vecteur ayant déjà la bonne taille. 
+			for j,col in enumerate(cols):
+				spans = col.findAll('span', recursive=False) # trouve-moi tous les spans dans col (colonne j)
+				mytext = "" # on initialise la variable qui constituera le contenu de chaque colonne (toutes les colonnes une à une)
+				for z,span in enumerate(spans):
+					if z == 0 : # si c'est le premier span
+						mytext = span.text.replace("&nbsp;", "") # alors insère son contenu tel quel dans la variable mytext
+						# print 'yes', i,j,z, mytext
+					else : # si c'est le 2e span ou les suivants, alors on va mettre des slashs et on ajoute le contenu à mytext (si celui-ci n'est pas vide) 
+						if span.text.replace ("&nbsp;", "")!='': #pour ne pas avoir deux slashs de suite : seulement lorsque le span n'est pas vide, 
+							mytext = mytext + "/" + span.text.replace ("&nbsp;", "") # alors son contenu est ajouté à la variable mytext
+							#print 'no ', i,j,z, mytext
+				newcols[j]=mytext
+			cols=newcols
+				#span =""
+				#span[j] = [col.span[j].text]
+				#cols = cols + "/" + col[j]	
+			if len(cols)>1 : # en fait, les astérisques en bas du tableau constituent une ligne à une colonne => pour supprimer le cas des fins de tableau où il y a des astérisques dans une ligne supplémentaire avec col unique // remove the cases of ends of tables where there are asterisks in an additional line with a unique col
+				mycols=mycols+cols[2]+'\t'+cols[3]+'\t'
+				colnames=colnames+'Allowance_Allocation_'+cols[1]+'\tVerified_Emission_'+cols[1]+'\t' # les émissions vérifiées et les allocations pour chaque année
 	# write output to ouput file (f_out)
 	mycols=re.sub(u'\u2013','-',mycols)
 	mycols=re.sub(u'&#39;',"'",mycols)
