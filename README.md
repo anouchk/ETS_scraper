@@ -4,7 +4,7 @@ A tool to scrape the data from the european emission trading scheme (ETS)
 
 This script has been prepared to store in a unique file the data from 14.000 installations registered in the EU transaction log.
 
-The information is available for 31 countries, 30 sectors, for the years 2005-2015. The content lists information like the installation name and country, the account holder's name, the verified emissions for each year and the free allocations for each year, the parent company, the address. 
+The information is available for 31 countries, 30 sectors, for the years 2005-2016. The content lists information like the installation name and country, the account holder's name, the verified emissions for each year and the free allocations for each year, the parent company, the address. 
 
 **// Open data**
 
