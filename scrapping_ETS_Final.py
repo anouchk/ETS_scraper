@@ -41,7 +41,7 @@ list_of_tables=[]
 for cntry in cntryList:
 	# selectionner un pays et une période et ouvrir la page // select a country and a period and open the page 
 	mute=client.selectReset(name='nap.registryCodeArray') # deselectionner toutes les options pays dans le choix multiple nap.registryCodeArray parce que quand on ouvre avec client il en sélectionne plusieurs // unselect all the options about the country in multiple choice nap.registryCodeArray
-	mute=client.select(name='nap.registryCodeArray',option=cntry) # selectionner l'option pays dans le choix multiple nap.registryCodeArray // selection the option country in the multiple choice nap.registryCodeArray
+	mute=client.select(name='nap.registryCodeArray',option=cntry) # selectionner l'option pays dans le choix multiple nap.registryCodeArray // select the option country in the multiple choice nap.registryCodeArray
 	mute=client.select(name='periodCode',option='All') # selectionner la periode dans le choix multiple periodCode // select period in multiple choice periodCode
 	mute=client.click(value='Search') # cliquer sur search // click on search
 	# attendre que la page s'update // wait till the page gets updated
@@ -78,7 +78,7 @@ f_out.write('cntry\tperiod\tpagenum\tinst_id\tpermit_id\tlink\n')
 
 pageStart=0		# numero de page-1 // number of page -1
 tabStart=0
-error=True # par défaut error est à true, donc je rentre dans ma boucle, et je remets error à faulse
+error=True # par défaut error est à true, donc je rentre dans ma boucle, et je remets error à faulse // by default, error is set to true, so we enter the loop, and then set it to false
 while error :
 	error=False
 	try:
@@ -91,7 +91,7 @@ while error :
 			cntry=table_to_scrap[0]
 			period=table_to_scrap[1]
 			URL=table_to_scrap[2]
-			print 'opening URL '+cntry+' '+period #pour ce qu'on fait quand le code s'exécute // that's to see what's happening when the code is running
+			print 'opening URL '+cntry+' '+period #pour ce qu'on fait quand le code s'exécute // to see what's happening when the code is running
 			mute=client.open(url=URL)
 			mute=client.waits.forPageLoad(timeout=timeOut)	
 			mute=client.waits.sleep(milliseconds=timeSleep) 
@@ -112,7 +112,7 @@ while error :
 					mute=client.waits.sleep(milliseconds=timeSleep)
 					continue
 				table = soup.find('table', attrs={'id':'tblNapList'})
-				print '.', # pour savoir où le pgm en est : s'il plante, on sait où il a planté (avec une virgule pour ne pas aller à la ligne et ainsi prendre moins de place) // # that's to see where the program is : if there's a bug, we now where (with a coma to avoid line wraping, not to take too much space) 
+				print '.', # pour savoir où le pgm en est : s'il plante, on sait où il a planté (avec une virgule pour ne pas aller à la ligne et ainsi prendre moins de place) // to see where the program is : if there's a bug, we now where (with a coma to avoid line wraping, not to take too much space) 
 				table_body = table.find('tbody')
 				print '.',
 				rows = table_body.findAll('tr',recursive=False)
@@ -274,14 +274,14 @@ for l,link in enumerate(DFunique['link']):
 			newcols=['a']*len(cols) # ici on crée un objet qui contient autant d'éléments vides que de colonnes dans le tableau d'origine (il y a autant de colonnes que de lignes de date). Car dans Python on ne peut pas (en tout cas on n'y arrive pas, il dit typeof = none) rajouter un élément à un vecteur vide. Il faut créer un vecteur ayant déjà la bonne taille. 
 			for j,col in enumerate(cols):
 				spans = col.findAll('span', recursive=False) # trouve-moi tous les spans dans col (colonne j)
-				mytext = "" # on initialise la variable qui constituera le contenu de chaque colonne (toutes les colonnes une à une)
+				mytext = "" # on initialise la variable qui constituera le contenu de chaque colonne (toutes les colonnes une à une) // variable that stores the content of each column
 				for z,span in enumerate(spans):
-					if z == 0 : # si c'est le premier span
-						mytext = span.text.replace("&nbsp;", "") # alors insère son contenu tel quel dans la variable mytext
+					if z == 0 : # si c'est le premier span // if it's the first span
+						mytext = span.text.replace("&nbsp;", "") # alors insère son contenu tel quel dans la variable mytext // insert the content as it is in the variable mytext
 						# print 'yes', i,j,z, mytext
-					else : # si c'est le 2e span ou les suivants, alors on va mettre des slashs et on ajoute le contenu à mytext (si celui-ci n'est pas vide) 
-						if span.text.replace ("&nbsp;", "")!='': #pour ne pas avoir deux slashs de suite : seulement lorsque le span n'est pas vide, 
-							mytext = mytext + "/" + span.text.replace ("&nbsp;", "") # alors son contenu est ajouté à la variable mytext
+					else : # si c'est le 2e span ou les suivants, alors on va mettre des slashs et on ajoute le contenu à mytext (si celui-ci n'est pas vide) // if it's the 2nd of follwings, separate each with a slash
+						if span.text.replace ("&nbsp;", "")!='': #pour ne pas avoir deux slashs de suite : seulement lorsque le span n'est pas vide, // only when the span is not empty
+							mytext = mytext + "/" + span.text.replace ("&nbsp;", "") # alors son contenu est ajouté à la variable mytext // add its content to the variable mytext
 							#print 'no ', i,j,z, mytext
 				newcols[j]=mytext
 			cols=newcols
