@@ -200,8 +200,6 @@ f_out=io.open(mydir + '/Emissions_allCompanies_allCountries' + date + '.txt','a'
 f_err=io.open(mydir + '/Emissions_allCompanies_allCountries_errors' + date + '.txt','w', encoding='utf16') # fichier pour écrire les lignes avec des erreurs // file to write lines with errors
 for l,link in enumerate(DFunique['link']):
 	print l,link
-#	if l<11558 :
-#		continue
 	url='http://ec.europa.eu/environment/ets/'+link[12:]
 	# lire avec mechanize // read with mechanize
 	print '.',
