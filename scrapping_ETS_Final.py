@@ -1,4 +1,4 @@
-mydir = "/Users/analutzky/Desktop/data/scrapping_ETS/scraping_15_08_2017" # je définis mon répertoire où seront créés mes fichiers scrapés. 
+mydir = "/Users/analutzky/Desktop/data/scrapping_ETS/data/15_08_2017" " # je définis mon répertoire où seront créés mes fichiers scrapés // defining the directory where the scraped data will be stored 
 date = "_15_08_2017"
 
 ###### PHASE 0: initialisation, lancer windmill // PHASE 0: initialization
@@ -18,7 +18,7 @@ client = WindmillTestClient(__name__)
 # temps avant timeout (pour ne pas bloquer si la page ne s'ouvre pas) // a certain amount of time before it gives up opening a page, so that it doesn't get stuck
 timeOut=u'8000'		# 8 secondes avant time out // 8 sec before timeout
 # temps de pause entre deux requêtes (pour ne pas surcharger les serveurs) // time lapse between two requests (not to overwhelm the servers)
-timeSleep=u'100' 	# 0.5 seconde // 0.5 sec
+timeSleep=u'100' 	# 0.1 seconde // 0.1 sec
 
 # l'url qu'on va vouloir scraper // the url we want to scrape
 rootServer="http://ec.europa.eu"
@@ -44,7 +44,7 @@ for cntry in cntryList:
 	mute=client.select(name='nap.registryCodeArray',option=cntry) # selectionner l'option pays dans le choix multiple nap.registryCodeArray // selection the option country in the multiple choice nap.registryCodeArray
 	mute=client.select(name='periodCode',option='All') # selectionner la periode dans le choix multiple periodCode // select period in multiple choice periodCode
 	mute=client.click(value='Search') # cliquer sur search // click on search
-	# attendre que la page s'update // wait tille the page gets updated
+	# attendre que la page s'update // wait till the page gets updated
 	mute=client.waits.forPageLoad(timeout=timeOut)
 	mute=client.waits.sleep(milliseconds=timeSleep) 
 	# scraper le contenu // scrape content
@@ -106,7 +106,7 @@ while error :
 			print str(NbPages)+'page to scrap'
 			for pagenum in range(0,NbPages):
 				if itab==tabStart and pagenum<pageStart :
-					print 'table'+str(itab)+', page'+str(pagenum+1)+'/'+str(NbPages)+' skipped'
+					print '\ntable'+str(itab)+', page'+str(pagenum+1)+'/'+str(NbPages)+' skipped'
 					mute=client.click(value='Next>') 
 					mute=client.waits.forPageLoad(timeout=timeOut)	
 					mute=client.waits.sleep(milliseconds=timeSleep)
@@ -189,7 +189,7 @@ from BeautifulSoup import BeautifulSoup
 import pandas as pd	
 
 # on lit le csv (tous les liens à scrapper) // reading csv file (which contains all the links to scrape)
-DF=pd.read_csv(mydir + '/list_of_links_allCountries' + date + '.txt',sep='\t',error_bad_lines=False) # error_bad_lines c'est un argument qui existe déjà dans pd.read_casv : quand un ligne est anormale, panda plante. Ca permet de l'éviter : au lieu de planter, il dit cette ligne a un pb, je la passe. // error_bad_lines is an argument that already exists in pd.read_casv : when a line is not normal, panda bugs. This enables to prevent it : instead of bugging, panda says : ok this line has a problem, I go to the next one. 
+DF=pd.read_csv(mydir + '/list_of_links_allCountries' + date + '.txt',sep='\t',error_bad_lines=True) # error_bad_lines c'est un argument qui existe déjà dans pd.read_casv : quand un ligne est anormale, panda plante. Ca permet de l'éviter : au lieu de planter, il dit cette ligne a un pb, je la passe. // error_bad_lines is an argument that already exists in pd.read_casv : when a line is not normal, panda bugs. This enables to prevent it : instead of bugging, panda says : ok this line has a problem, I go to the next one. 
 
 # on enleve les liens qui sont en double // getting rid of th duplicate links 
 DFunique=DF.drop_duplicates(subset='link') # http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html
@@ -200,6 +200,8 @@ f_out=io.open(mydir + '/Emissions_allCompanies_allCountries' + date + '.txt','a'
 f_err=io.open(mydir + '/Emissions_allCompanies_allCountries_errors' + date + '.txt','w', encoding='utf16') # fichier pour écrire les lignes avec des erreurs // file to write lines with errors
 for l,link in enumerate(DFunique['link']):
 	print l,link
+#	if l<11558 :
+#		continue
 	url='http://ec.europa.eu/environment/ets/'+link[12:]
 	# lire avec mechanize // read with mechanize
 	print '.',
