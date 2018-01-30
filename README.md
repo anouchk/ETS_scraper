@@ -20,6 +20,14 @@ It gave way to the publication of a **5 stories investigation**, released on May
 <br>5. Challenges ahead : can the ETS horse be put inside the barn ? 
 <br>The whole investigation was presented for international Datajournalism awards as **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
 
+
+**// Stories published in the Netherlands and Germany**
+Marcel Pauly's story released in Der Spiegel (Germany) November 16th
+http://www.spiegel.de/wissenschaft/mensch/deutschland-das-sind-die-groessten-klimasuender-a-1178207.html
+
+De Groene Amsterdammer's story from Luuk Sengers released September 6th (Netherlands), were they quote AEF (my news outlet)
+http://bit.ly/2yMkWUc
+
 **// 2018 update and caveat**
 
 This scraper parses the "Allocations to stationary installations" part of the EU transactions log. We realized with a few European journalists that some plants were missing, that were included in the "Operator Holding Accounts" part of the EUTL. 
