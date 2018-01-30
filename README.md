@@ -20,6 +20,12 @@ It gave way to the publication of a **5 stories investigation**, released on May
 <br>5. Challenges ahead : can the ETS horse be put inside the barn ? 
 <br>The whole investigation was presented for international Datajournalism awards as **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
 
+**// 2018 update and caveat**
+
+This scraper parses the "Allocations to stationary installations" part of the EU transactions log. We realized with a few European journalists that some plants were missing, that were included in the "Operator Holding Accounts" part of the EUTL. 
+
+Lucilky, the world is full of helping hands. Nathann Cohen, a skilled computer scientist, took some of his spare time to give a hand scraping the 236 missing plants. The result is here ("All Operator Holding accounts") : https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/ … 15 505 plants. \o/
+
 # ETS scraper 
 
 Un outil pour scraper les données du marché européen de quotas de CO2
