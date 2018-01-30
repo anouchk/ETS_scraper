@@ -22,11 +22,12 @@ It gave way to the publication of a **5 stories investigation**, released on May
 
 
 **// Stories published in the Netherlands and Germany**
+
 Marcel Pauly's story released in Der Spiegel (Germany) November 16th
-http://www.spiegel.de/wissenschaft/mensch/deutschland-das-sind-die-groessten-klimasuender-a-1178207.html
+<br>http://www.spiegel.de/wissenschaft/mensch/deutschland-das-sind-die-groessten-klimasuender-a-1178207.html
 
 De Groene Amsterdammer's story from Luuk Sengers released September 6th (Netherlands), were they quote AEF (my news outlet)
-http://bit.ly/2yMkWUc
+<br>http://bit.ly/2yMkWUc
 
 **// 2018 update and caveat**
 
