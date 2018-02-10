@@ -41,7 +41,7 @@ Un outil pour scraper les données du marché européen de quotas de CO2
 
 Ce script a été réalisé pour stocker dans un seul fichier les données des 14 000 installations inscrites au registre européen du marché de quotas de CO2.
 
-L'information est disponible pour 31 pays, 30 secteurs, pour les années 2005-2015. Le contenu liste des informations telles que le nom et le pays de l'installation industrielle, le nom du teneur de compte, de la maison-mère, les émissions vérifiées pour chaque année ainsi que les allocations de quotas gratuits pour chaque année, l'adresse postale.
+L'information est disponible pour 31 pays, 30 secteurs, pour les années 2005-2016. Le contenu liste des informations telles que le nom et le pays de l'installation industrielle, le nom du teneur de compte, de la maison-mère, les émissions vérifiées pour chaque année ainsi que les allocations de quotas gratuits pour chaque année, l'adresse postale.
 
 **// Open data**
 
