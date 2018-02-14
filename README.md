@@ -33,7 +33,7 @@ De Groene Amsterdammer's story from Luuk Sengers released September 6th (Netherl
 
 This scraper parses the "Allocations to stationary installations" part of the EU transactions log. We realized with a few European journalists that some plants were missing, that were included in the "Operator Holding Accounts" part of the EUTL. 
 
-Lucilky, the world is full of helping hands. Nathann Cohen, a skilled computer scientist, took some of his spare time to give a hand scraping the 236 missing plants. The result is here ("All Operator Holding accounts") : https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/ 
+Lucilky, the world is full of helping hands. Nathann Cohen, a skilled computer scientist, took some of his spare time to give a hand scraping the **236 missing plants**. The result is here ("All Operator Holding accounts") : https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/ 
 <br>… 15 505 plants. \o/
 
 # ETS scraper 
