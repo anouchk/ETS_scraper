@@ -56,3 +56,18 @@ Cela a donné lieu à la publication d'une **enquête en 5 volets**, les 31 mai 
 <br>4. Comment les électriciens européens avaient (presque) tout prévu du marché ETS voici 20 ans. 
 <br>5. Les défis du marché ETS : le ver était-il dans le fruit ?
 <br>L'enquête a été présentée à un prix international de datajournalisme sous l'appellation **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
+
+**// Enquêtes publiées aux Pays-Bas et en Allemagne**
+
+Un papier de Marcel Pauly a été publié dans Der Spiegel (Allemagne) le 16 novembre 2017
+<br><a href="http://www.spiegel.de/wissenschaft/mensch/deutschland-das-sind-die-groessten-klimasuender-a-1178207.html">http://www.spiegel.de/wissenschaft/mensch/deutschland-das-sind-die-groessten-klimasuender-a-1178207.html</a> 
+
+Un papier de plusieurs journalistes dont Luuk Sengers a été publié dans De Groene Amsterdammer's (Pays-Bas) le 6 septembre 2017 
+<br><a href="http://bit.ly/2yMkWUc">"The industrial lobby is incredibly strong"</a>
+
+**// Actualisation 2018 et mise en garde**
+
+Ce scraper parcourt la partie "Allocations to stationary installations" du EU transactions log. Or nous nous sommes rendu compte avec quelques journalistes européens que plusieurs installations manquaient à l'appel, qui étaient incluers dans la partie "Operator Holding Accounts" du EUTL. 
+
+Heureusement, le monde est rempli de talents généreux. Nathann Cohen, un chercheur en informatique, a pris un peu de son temps libre pour scraper les **236 installations manquantes**. Le résultat est ici ("All Operator Holding accounts") : <a href="https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/">https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/</a> 
+<br>… 15 505 installations. \o/
