@@ -68,7 +68,7 @@ Un papier de plusieurs journalistes dont Luuk Sengers a été publié dans De Gr
 
 **// Actualisation 2018 et mise en garde**
 
-Ce scraper parcourt la partie "Allocations to stationary installations" du EU transactions log. Or nous nous sommes rendu compte avec quelques journalistes européens que plusieurs installations manquaient à l'appel, qui étaient incluers dans la partie "Operator Holding Accounts" du EUTL. 
+Ce scraper parcourt la partie "Allocations to stationary installations" du EU transactions log. Or nous nous sommes rendu compte avec quelques journalistes européens que plusieurs installations manquaient à l'appel, qui étaient inclues dans la partie "Operator Holding Accounts" du EUTL. 
 
 Heureusement, le monde est rempli de talents généreux. Nathann Cohen, un chercheur en informatique, a pris un peu de son temps libre pour scraper les **236 installations manquantes**. Le résultat est ici ("All Operator Holding accounts") : <a href="https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/">https://www.steinertriples.fr/ncohen/data/EU_CO2_LOG/</a> 
 <br>… 15 505 installations. \o/
