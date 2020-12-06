@@ -15,9 +15,9 @@ The unique file issued from the scraping has been published on French open-gover
 It gave way to the publication of a **5 stories investigation**, released on May 31st and April 3d, 2017. 
 <br>1. A ride into the depth of the ETS (or 12 years of impossible reforms) 
 <br>2.<a href="https://www.aefinfo.fr/depeche/557532"> Please meet the big 40 on European CO2 market</a> 
-<br>3.<a href="https://www.aefinfo.fr/depeche/559634"> Introducing the big 30 Frenchies and their "fat cats" 
-<br>4.<a href="https://www.aefinfo.fr/depeche/557519"> How the electric companies had (almost) foreseen it all, 20 years ago. 
-<br>5.<a href="https://www.aefinfo.fr/depeche/557538"> Challenges ahead : can the ETS horse be put inside the barn ? 
+<br>3.<a href="https://www.aefinfo.fr/depeche/559634"> Introducing the big 30 Frenchies and their "fat cats" </a> 
+<br>4.<a href="https://www.aefinfo.fr/depeche/557519"> How the electric companies had (almost) foreseen it all, 20 years ago. </a> 
+<br>5.<a href="https://www.aefinfo.fr/depeche/557538"> Challenges ahead : can the ETS horse be put inside the barn ? </a> 
 <br>The whole investigation was presented for international Datajournalism awards as **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
 
 
@@ -53,9 +53,9 @@ Le fichier unique issu du scrapping a été publié sur le portail gouvernementa
 Cela a donné lieu à la publication d'une **enquête en 5 volets**, les 31 mai et 3 avril 2017. 
 <br>1. 2005-2017 : 12 années d’impossibles réformes du marché européen du carbone EU ETS.
 <br>2.<a href="https://www.aefinfo.fr/depeche/557532"> Quels sont les grands émetteurs du marché européen du carbone et combien pèsent-ils ?</a> 
-<br>3.<a href="https://www.aefinfo.fr/depeche/559634"> Zoom sur la France. Quelles sont les 30 entreprises-clés ?
-<br>4.<a href="https://www.aefinfo.fr/depeche/557519"> Comment les électriciens européens avaient (presque) tout prévu du marché ETS voici 20 ans. 
-<br>5.<a href="https://www.aefinfo.fr/depeche/557538"> Les défis du marché ETS : le ver était-il dans le fruit ?
+<br>3.<a href="https://www.aefinfo.fr/depeche/559634"> Zoom sur la France. Quelles sont les 30 entreprises-clés ?</a> 
+<br>4.<a href="https://www.aefinfo.fr/depeche/557519"> Comment les électriciens européens avaient (presque) tout prévu du marché ETS voici 20 ans. </a> 
+<br>5.<a href="https://www.aefinfo.fr/depeche/557538"> Les défis du marché ETS : le ver était-il dans le fruit ?</a> 
 <br>L'enquête a été présentée à un prix international de datajournalisme sous l'appellation **<a href="http://community.globaleditorsnetwork.org/content/big-40-european-co2-market-whos-really-control">"The big 40 on European CO2 market : who's really in control ?"</a>**.
 
 **// Enquêtes publiées aux Pays-Bas et en Allemagne**
