@@ -14,7 +14,7 @@ The unique file issued from the scraping has been published on French open-gover
 
 It gave way to the publication of a **5 stories investigation**, released on May 31st and April 3d, 2017. 
 <br>1. A ride into the depth of the ETS (or 12 years of impossible reforms) 
-<br><a href="http://www.aef.info/depeche/libre/557532">2. Please meet the big 40 on European CO2 market</a> 
+<br><a href="https://www.aefinfo.fr/depeche/557532">2. Please meet the big 40 on European CO2 market</a> 
 <br>3. Introducing the big 30 Frenchies and their "fat cats" 
 <br>4. How the electric companies had (almost) foreseen it all, 20 years ago. 
 <br>5. Challenges ahead : can the ETS horse be put inside the barn ? 
@@ -52,7 +52,7 @@ Le fichier unique issu du scrapping a été publié sur le portail gouvernementa
 
 Cela a donné lieu à la publication d'une **enquête en 5 volets**, les 31 mai et 3 avril 2017. 
 <br>1. 2005-2017 : 12 années d’impossibles réformes du marché européen du carbone EU ETS.
-<br><a href="http://www.aef.info/depeche/libre/557532">2. Quels sont les grands émetteurs du marché européen du carbone et combien pèsent-ils ?</a> 
+<br><a href="https://www.aefinfo.fr/depeche/557532">2. Quels sont les grands émetteurs du marché européen du carbone et combien pèsent-ils ?</a> 
 <br>3. Zoom sur la France. Quelles sont les 30 entreprises-clés ?
 <br>4. Comment les électriciens européens avaient (presque) tout prévu du marché ETS voici 20 ans. 
 <br>5. Les défis du marché ETS : le ver était-il dans le fruit ?
